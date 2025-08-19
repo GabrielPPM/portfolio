@@ -3,6 +3,7 @@
 
 @theme {
 	--animate-enterFromTop: enterFromTop 0.3s ease-out forwards;
+	--animate-enterFromLeft: enterFromLeft 0.3s ease-out forwards;
 
 	@keyframes enterFromTop {
 		0% {
@@ -10,6 +11,15 @@
 		}
 		100% {
 			transform: translateY(0rem);
+		}
+	}
+
+	@keyframes enterFromLeft {
+		0% {
+			transform: translateX(-5rem);
+		}
+		100% {
+			transform: translateX(0rem);
 		}
 	}
 }

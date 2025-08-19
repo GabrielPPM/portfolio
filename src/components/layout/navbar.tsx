@@ -7,7 +7,7 @@ import React, { ReactNode } from "react";
 export default function Navbar() {
 	const pathname = usePathname();
 
-	const links = [
+	const links: {name: string, href: string}[] = [
 		{ name: "Home", href: "/" },
 		{ name: "Experiências", href: "/experiences" },
 		{ name: "Sobre mim", href: "/about" },
