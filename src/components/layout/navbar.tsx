@@ -15,7 +15,7 @@ export default function Navbar() {
 	];
 
 	return (
-		<nav className="absolute z-50 flex justify-self-center justify-center sm:w-[18.5375rem] md:w-[21rem] lg:w-[30rem] h-[2.5rem] md:h-[3rem] mt-[1rem] bg-white/50 backdrop-blur-md rounded-full items-center animate-enterFromTop">
+		<nav className="absolute z-50 flex justify-self-center justify-center sm:w-[18.5375rem] md:w-[21rem] lg:w-[28rem] h-[2.5rem] md:h-[3rem] mt-[1rem] bg-white/50 backdrop-blur-md rounded-full items-center animate-enterFromTop">
 			<ul className="flex justify-around w-full mx-[1rem] gap-[1rem] text-xl text-black font-bold">
 				{links.map((link): ReactNode => {
 					return (
