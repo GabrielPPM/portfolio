@@ -44,7 +44,7 @@ export default function Sidebar() {
 					display ? "animate-enterFromLeft" : "animate-exitLeft"
 				}`}>
 				<ul
-					className={`flex flex-col justify-between h-[15rem] md:h-[17rem] lg:h-[21rem]  text-xl text-[#0B181F] font-bold bg-[#3B90D7]/50 backdrop-blur-sm rounded-md ${
+					className={`flex flex-col justify-between h-[15rem] md:h-[17rem] lg:h-[21rem]  text-xl text-[#0B181F] font-bold bg-[#3B90D7]/50 backdrop-blur-xs rounded-md ${
 						display
 							? "w-[2.5rem] md:w-[3rem] lg:w-[3rem]"
 							: "pointer-events-none w-[2.5rem]"
@@ -77,7 +77,7 @@ export default function Sidebar() {
 				}`}>
 				<button
 					className={
-						"bg-[#3B90D7]/50 backdrop-blur-sm text-4xl sm:text-4xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
+						"bg-[#3B90D7]/50 backdrop-blur-xs text-4xl sm:text-4xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
 					}
 					onClick={() => setDisplay(!display)}>
 					{">"}
