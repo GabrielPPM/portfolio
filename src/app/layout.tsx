@@ -19,6 +19,7 @@ export default function RootLayout({
 				<Navbar />
 				<Sidebar />
 				<main className="z-20">{children}</main>
+				<footer></footer>
 			</body>
 		</html>
 	);
