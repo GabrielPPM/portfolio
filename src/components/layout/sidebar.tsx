@@ -44,9 +44,9 @@ export default function Sidebar() {
 					display ? "animate-enterFromLeft" : "animate-exitLeft"
 				}`}>
 				<ul
-					className={`flex flex-col justify-between h-[15rem] md:h-[17rem] lg:h-[21rem]  text-xl text-[#0B181F] font-bold bg-[#3B90D7]/50 backdrop-blur-xs rounded-md ${
+					className={`flex flex-col justify-between h-[20rem] md:h-[20rem] lg:h-[21rem] text-xl text-[#0B181F] font-bold bg-[#3B90D7]/50 backdrop-blur-xs rounded-md ${
 						display
-							? "w-[2.5rem] md:w-[3rem] lg:w-[3rem]"
+							? "w-[3.5rem] md:w-[3.5rem] lg:w-[3.5rem]"
 							: "pointer-events-none w-[2.5rem]"
 					}`}>
 					{links.map((link): ReactNode => {
@@ -72,12 +72,12 @@ export default function Sidebar() {
 			<div
 				className={`fixed flex items-center h-[100vh] ${
 					display
-						? "left-[3rem] sm:left-[3rem] md:left-[3.5rem] animate-enterFromLeft"
+						? "left-[4.0rem] sm:left-[4.0rem] md:left-[4.0rem] animate-enterFromLeft"
 						: "left-[3rem] animate-exitLeft"
 				}`}>
 				<button
 					className={
-						"bg-[#3B90D7]/50 backdrop-blur-xs text-4xl sm:text-4xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
+						"bg-[#3B90D7]/50 backdrop-blur-xs text-5xl sm:text-5xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
 					}
 					onClick={() => setDisplay(!display)}>
 					{">"}

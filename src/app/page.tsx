@@ -1,15 +1,16 @@
+import StackCard from "@/components/home/stackCard";
 import TechStackLayout from "@/components/home/techStackLayout";
-import AngularLogo from "@/components/icons/home/angularLogo";
-import Css3Logo from "@/components/icons/home/css3Logo";
-import GitLogo from "@/components/icons/home/gitLogo";
-import Html5Logo from "@/components/icons/home/html5Logo";
-import JavascriptLogo from "@/components/icons/home/javascriptLogo";
-import MongoLogo from "@/components/icons/home/mongoLogo";
-import NextjsLogo from "@/components/icons/home/nextjsLogo";
-import NodejsLogo from "@/components/icons/home/nodeLogo";
-import ReactLogo from "@/components/icons/home/reactLogo";
-import TailwindcssLogo from "@/components/icons/home/tailwindcssLogo";
-import TypescriptLogo from "@/components/icons/home/typescriptLogo";
+import AngularLogo from "@/components/icons/home/techStacks/angularLogo";
+import Css3Logo from "@/components/icons/home/techStacks/css3Logo";
+import GitLogo from "@/components/icons/home/techStacks/gitLogo";
+import Html5Logo from "@/components/icons/home/techStacks/html5Logo";
+import JavascriptLogo from "@/components/icons/home/techStacks/javascriptLogo";
+import MongoLogo from "@/components/icons/home/techStacks/mongoLogo";
+import NextjsLogo from "@/components/icons/home/techStacks/nextjsLogo";
+import NodejsLogo from "@/components/icons/home/techStacks/nodeLogo";
+import ReactLogo from "@/components/icons/home/techStacks/reactLogo";
+import TailwindcssLogo from "@/components/icons/home/techStacks/tailwindcssLogo";
+import TypescriptLogo from "@/components/icons/home/techStacks/typescriptLogo";
 import Card from "@/types/card.types";
 import Image from "next/image";
 
@@ -72,6 +73,12 @@ export default function Home() {
 		},
 	];
 
+	const startDate = new Date(2024, 3).getUTCFullYear();
+	const todayDate = new Date().getUTCFullYear();
+	console.log(startDate);
+	console.log(todayDate);
+	console.log("Years of experience: ", todayDate - startDate);
+
 	return (
 		<>
 			<main className="flex justify-center-safe items-end pt-[7rem] mx-[1.5rem]">
@@ -104,9 +111,12 @@ export default function Home() {
 					<section>
 						<section className="flex flex-col justify-center text-center w-full">
 							<TechStackLayout
-								title="Tecnologias"
+								title="Tech Stacks"
 								cards={cards}
 							/>
+						</section>
+						<section className="flex flex-col justify-center text-center w-full">
+							<TechStackLayout title="Skills" cards={cards} />
 						</section>
 					</section>
 				</section>
