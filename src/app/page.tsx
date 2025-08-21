@@ -1,6 +1,77 @@
+import TechStackLayout from "@/components/home/techStackLayout";
+import AngularLogo from "@/components/icons/home/angularLogo";
+import Css3Logo from "@/components/icons/home/css3Logo";
+import GitLogo from "@/components/icons/home/gitLogo";
+import Html5Logo from "@/components/icons/home/html5Logo";
+import JavascriptLogo from "@/components/icons/home/javascriptLogo";
+import MongoLogo from "@/components/icons/home/mongoLogo";
+import NextjsLogo from "@/components/icons/home/nextjsLogo";
+import NodejsLogo from "@/components/icons/home/nodeLogo";
+import ReactLogo from "@/components/icons/home/reactLogo";
+import TailwindcssLogo from "@/components/icons/home/tailwindcssLogo";
+import TypescriptLogo from "@/components/icons/home/typescriptLogo";
+import Card from "@/types/card.types";
 import Image from "next/image";
 
 export default function Home() {
+	const cards: Card[] = [
+		{
+			img: <JavascriptLogo />,
+			imgTitle: "JavaScript",
+			level: 7,
+		},
+		{
+			img: <Html5Logo />,
+			imgTitle: "HTML",
+			level: 9,
+		},
+		{
+			img: <Css3Logo />,
+			imgTitle: "CSS",
+			level: 8,
+		},
+		{
+			img: <AngularLogo />,
+			imgTitle: "Angular",
+			level: 8,
+		},
+		{
+			img: <ReactLogo />,
+			imgTitle: "React",
+			level: 7,
+		},
+		{
+			img: <NextjsLogo />,
+			imgTitle: "Next.js",
+			level: 6,
+		},
+		{
+			img: <TypescriptLogo />,
+			imgTitle: "Typescript",
+			level: 8,
+		},
+		{
+			img: <TailwindcssLogo />,
+			imgTitle: "Tailwind CSS",
+			level: 7,
+		},
+		{
+			img: <NodejsLogo />,
+			imgTitle: "Node.js",
+			level: 6,
+		},
+		{
+			img: <MongoLogo />,
+			imgTitle: "MongoDB",
+			level: 5,
+		},
+		{
+			img: <GitLogo />,
+			imgTitle: "Git",
+			level: 7,
+		},
+	];
+
 	return (
 		<>
 			<main className="flex justify-center-safe items-end pt-[7rem] mx-[1.5rem]">
@@ -32,97 +103,10 @@ export default function Home() {
 					</section>
 					<section>
 						<section className="flex flex-col justify-center text-center w-full">
-							<h2 className="text-5xl mt-[1rem]">TECH STACKS</h2>
-							<h2 className="text-4xl py-[1rem]">Front-End</h2>
-							<div className="flex flex-wrap justify-center">
-								<Image
-									src={
-										"https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Angular"
-								/>
-								<Image
-									src={
-										"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="React"
-								/>
-								<Image
-									src={
-										"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Typescript"
-								/>
-								<Image	
-									src={
-										"https://www.svgrepo.com/show/354113/nextjs-icon.svg"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Angular"
-								/>
-								<Image
-									src={
-										"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png"
-									}
-									className="object-fit border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Angular"
-								/>
-							</div>
-							<h2 className="text-4xl py-[1rem]">Back-End</h2>
-							<div className="flex flex-wrap justify-center">
-								<Image
-									src={
-										"https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/node-js-icon.png"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Node"
-								/>
-								<Image
-									src={
-										"https://images.icon-icons.com/2415/PNG/512/mongodb_original_wordmark_logo_icon_146425.png"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="MongoDB"
-								/>
-							</div>
-							<h2 className="text-4xl py-[1rem]">Tools</h2>
-							<div className="flex flex-wrap justify-center">
-								<Image
-									src={
-										"https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="Git"
-								/>
-								<Image
-									src={
-										"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-									}
-									className="border-2 border-[#EBBA21] p-[0.5rem] bg-[#ffffff]"
-									width={80}
-									height={80}
-									alt="GitHub"
-								/>
-							</div>
+							<TechStackLayout
+								title="Tecnologias"
+								cards={cards}
+							/>
 						</section>
 					</section>
 				</section>

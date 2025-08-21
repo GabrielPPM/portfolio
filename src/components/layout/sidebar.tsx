@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import React, { ReactNode, useState } from "react";
-import EmailIcon from "../icons/emailIcon";
-import GitHubLogo from "../icons/gitHubLogo";
-import WhatsappIcon from "../icons/whatsappIcon";
-import LinkedinIcon from "../icons/linkedinIcon";
+import EmailIcon from "../icons/sidebar/emailIcon";
+import GitHubLogo from "../icons/sidebar/gitHubLogo";
+import WhatsappIcon from "../icons/sidebar/whatsappIcon";
+import LinkedinIcon from "../icons/sidebar/linkedinIcon";
 
 export default function Sidebar() {
 	const [display, setDisplay] = useState(true);
