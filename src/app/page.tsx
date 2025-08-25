@@ -1,3 +1,4 @@
+"use client"
 import TechStackLayout from "@/components/home/techStackLayout";
 import Timeline from "@/components/home/timeline";
 import AngularLogo from "@/components/icons/home/techStacks/angularLogo";
@@ -15,6 +16,14 @@ import Card from "@/types/card";
 import {TimelineData} from "@/types/timeline";
 import Image from "next/image";
 import {ReactNode} from "react";
+import {
+    motion,
+    MotionValue,
+    useScroll,
+    useSpring,
+    useTransform,
+} from "motion/react"
+import { useRef } from "react"
 
 export default function Home() {
 	const techStackCards: Card[] = [
@@ -124,6 +133,8 @@ export default function Home() {
 		},
 	];
 
+	function useParallax(value: MotionValue<number>)
+
 	return (
 		<>
 			<main className="flex justify-center-safe items-end mx-[1.5rem]">
@@ -131,14 +142,16 @@ export default function Home() {
 					<section
 						id="about-me"
 						className="flex flex-col items-center-safe sm:w-full gap-[1rem]">
-						<Image
+						<motion.div className="" initial={{opacity: 0, scale:0}} animate={{opacity: 1, scale: 1}} transition={{duration: 0.4, scale: {type: "spring", visualDuration: 0.4, bounce: 0.5}}} whileHover={{ scale: 1.07 }} whileTap={{ scale: 1.07 }}>
+							<Image
 							className="w-[12rem] h-[14.4rem] mt-[5.5rem] mb-[1.5rem] rounded-2xl object-none object-center"
 							src="/Gabriel Machado.webp"
 							width={150}
 							height={150}
 							alt="foto de perfil"
 							priority={true}
-						/>
+							/>
+						</motion.div>
 						<h1 className="text-center text-4xl font-bodoni">
 							Hello World! Eu sou Gabriel Machado
 						</h1>
