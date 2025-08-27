@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import TechStackLayout from "@/components/home/techStackLayout";
 import Timeline from "@/components/home/timeline";
 import AngularLogo from "@/components/icons/home/techStacks/angularLogo";
@@ -13,17 +13,20 @@ import ReactLogo from "@/components/icons/home/techStacks/reactLogo";
 import TailwindcssLogo from "@/components/icons/home/techStacks/tailwindcssLogo";
 import TypescriptLogo from "@/components/icons/home/techStacks/typescriptLogo";
 import Card from "@/types/card";
-import {TimelineData} from "@/types/timeline";
+import { TimelineData } from "@/types/timeline";
 import Image from "next/image";
-import {ReactNode} from "react";
+import { ReactNode, useEffect } from "react";
 import {
-    motion,
-    MotionValue,
-    useScroll,
-    useSpring,
-    useTransform,
-} from "motion/react"
-import { useRef } from "react"
+	motion,
+	MotionValue,
+	useAnimate,
+	useAnimation,
+	useInView,
+	useScroll,
+	useSpring,
+	useTransform,
+} from "motion/react";
+import { useRef } from "react";
 
 export default function Home() {
 	const techStackCards: Card[] = [
@@ -133,32 +136,97 @@ export default function Home() {
 		},
 	];
 
-	function useParallax(value: MotionValue<number>)
+	const ref = useRef(null);
+	const isInView = useInView(ref, {
+		once: true,
+	});
+
+	const mainControls = useAnimation();
+	const exitControls = useAnimation();
+
+	useEffect(() => {
+		{
+			if (isInView) {
+				mainControls.start("visible");
+			} else {
+				mainControls.start("hidden");
+			}
+		}
+	}, [isInView]);
 
 	return (
 		<>
 			<main className="flex justify-center-safe items-end mx-[1.5rem]">
 				<section className="flex flex-col items-center gap-[1rem]">
 					<section
+						ref={ref}
 						id="about-me"
 						className="flex flex-col items-center-safe sm:w-full gap-[1rem]">
-						<motion.div className="" initial={{opacity: 0, scale:0}} animate={{opacity: 1, scale: 1}} transition={{duration: 0.4, scale: {type: "spring", visualDuration: 0.4, bounce: 0.5}}} whileHover={{ scale: 1.07 }} whileTap={{ scale: 1.07 }}>
+						<motion.div
+							initial={{ opacity: 0, scale: 0 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{
+								duration: 0.4,
+								scale: {
+									type: "spring",
+									visualDuration: 0.4,
+									bounce: 0.5,
+								},
+							}}
+							whileHover={{ scale: 1.07 }}
+							whileTap={{ scale: 1.07 }}>
 							<Image
-							className="w-[12rem] h-[14.4rem] mt-[5.5rem] mb-[1.5rem] rounded-2xl object-none object-center"
-							src="/Gabriel Machado.webp"
-							width={150}
-							height={150}
-							alt="foto de perfil"
-							priority={true}
+								className="w-[12rem] h-[14.4rem] mt-[5.5rem] mb-[1.5rem] rounded-2xl object-none object-center"
+								src="/Gabriel Machado.webp"
+								width={150}
+								height={150}
+								alt="foto de perfil"
+								priority={true}
 							/>
 						</motion.div>
-						<h1 className="text-center text-4xl font-bodoni">
+						<motion.h1
+							className="text-center text-4xl font-bodoni"
+							variants={{
+								hidden: { opacity: 0, x: -75 },
+								visible: { opacity: 1, x: 0 },
+							}}
+							initial="hidden"
+							animate={mainControls}
+							transition={{
+								type: "spring",
+								duration: 0.3,
+								delay: 0.25,
+							}}>
 							Hello World! Eu sou Gabriel Machado
-						</h1>
-						<h2 className="text-center text-2xl my-[0.5rem] font-bodoni">
+						</motion.h1>
+						<motion.h2
+							className="text-center text-2xl my-[0.5rem] font-bodoni"
+							variants={{
+								hidden: { opacity: 0, x: 75 },
+								visible: { opacity: 1, x: 0 },
+							}}
+							initial="hidden"
+							animate={mainControls}
+							transition={{
+								type: "spring",
+								duration: 0.3,
+								delay: 0.5,
+							}}>
 							Desenvolvedor front-end
-						</h2>
-						<p className="max-[333px]:text-center text-[1.65rem] mx-[1rem]">
+						</motion.h2>
+						<motion.p
+							className="max-[333px]:text-center text-[1.65rem] mx-[1rem]"
+							variants={{
+								hidden: { opacity: 0, x: -75 },
+								visible: { opacity: 1, x: 0 },
+							}}
+							initial="hidden"
+							animate={mainControls}
+							transition={{
+								type: "spring",
+								duration: 0.3,
+								delay: 0.75,
+							}}>
 							Atualmente, trabalho com React, Angular, TypeScript
 							e ferramentas modernas para criar aplicações
 							escaláveis, com foco em arquitetura limpa,
@@ -166,7 +234,7 @@ export default function Home() {
 							evoluir como full-stack developer, aprofundando meus
 							conhecimentos em back-end e infraestrutura para
 							entregar soluções completas de ponta a ponta.
-						</p>
+						</motion.p>
 					</section>
 
 					<section
@@ -200,7 +268,6 @@ export default function Home() {
 								cards={skillsCards}
 							/>
 						</section>
-
 					</section>
 				</section>
 			</main>
