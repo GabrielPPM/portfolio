@@ -128,7 +128,7 @@ export default function Home() {
 
 	return (
 		<>
-			<main className="flex justify-center-safe items-end mx-[1.5rem]">
+			<main className="flex justify-center-safe items-end w-[100vw] mx-[1.5rem]">
 				<motion.section className="flex flex-col items-center gap-[1rem]">
 					<section
 						id="about-me"
