@@ -15,18 +15,8 @@ import TypescriptLogo from "@/components/icons/home/techStacks/typescriptLogo";
 import Card from "@/types/card";
 import { TimelineData } from "@/types/timeline";
 import Image from "next/image";
-import { ReactNode, useEffect } from "react";
-import {
-	motion,
-	MotionValue,
-	useAnimate,
-	useAnimation,
-	useInView,
-	useScroll,
-	useSpring,
-	useTransform,
-} from "motion/react";
-import { useRef } from "react";
+import { ReactNode } from "react";
+import { motion } from "motion/react";
 
 export default function Home() {
 	const techStackCards: Card[] = [
@@ -136,47 +126,23 @@ export default function Home() {
 		},
 	];
 
-	const ref = useRef(null);
-	const isInView = useInView(ref, {
-		once: true,
-	});
-
-	const mainControls = useAnimation();
-	const exitControls = useAnimation();
-
-	useEffect(() => {
-		{
-			if (isInView) {
-				mainControls.start("visible");
-			} else {
-				mainControls.start("hidden");
-			}
-		}
-	}, [isInView]);
-
 	return (
 		<>
 			<main className="flex justify-center-safe items-end mx-[1.5rem]">
-				<section className="flex flex-col items-center gap-[1rem]">
+				<motion.section className="flex flex-col items-center gap-[1rem]">
 					<section
-						ref={ref}
 						id="about-me"
 						className="flex flex-col items-center-safe sm:w-full gap-[1rem]">
 						<motion.div
-							initial={{ opacity: 0, scale: 0 }}
-							animate={{ opacity: 1, scale: 1 }}
 							transition={{
-								duration: 0.4,
 								scale: {
 									type: "spring",
-									visualDuration: 0.4,
-									bounce: 0.5,
+									delay: 0.5,
+									visualDuration: 0.5,
 								},
-							}}
-							whileHover={{ scale: 1.07 }}
-							whileTap={{ scale: 1.07 }}>
+							}}>
 							<Image
-								className="w-[12rem] h-[14.4rem] mt-[5.5rem] mb-[1.5rem] rounded-2xl object-none object-center"
+								className="w-[12rem] h-[14.4rem] mt-[5.5rem] rounded-2xl object-none object-center"
 								src="/Gabriel Machado.webp"
 								width={150}
 								height={150}
@@ -186,46 +152,34 @@ export default function Home() {
 						</motion.div>
 						<motion.h1
 							className="text-center text-4xl font-bodoni"
-							variants={{
-								hidden: { opacity: 0, x: -75 },
-								visible: { opacity: 1, x: 0 },
-							}}
-							initial="hidden"
-							animate={mainControls}
+							initial={{ opacity: 0, x: "-100%" }}
+							whileInView={{ opacity: 1, x: "0%" }}
 							transition={{
-								type: "spring",
-								duration: 0.3,
-								delay: 0.25,
+								x: {
+									visualDuration: 0.5,
+								},
 							}}>
 							Hello World! Eu sou Gabriel Machado
 						</motion.h1>
 						<motion.h2
 							className="text-center text-2xl my-[0.5rem] font-bodoni"
-							variants={{
-								hidden: { opacity: 0, x: 75 },
-								visible: { opacity: 1, x: 0 },
-							}}
-							initial="hidden"
-							animate={mainControls}
+							initial={{ opacity: 0, x: "100%" }}
+							whileInView={{ opacity: 1, x: "0%" }}
 							transition={{
-								type: "spring",
-								duration: 0.3,
-								delay: 0.5,
+								x: {
+									visualDuration: 0.5,
+								},
 							}}>
 							Desenvolvedor front-end
 						</motion.h2>
 						<motion.p
 							className="max-[333px]:text-center text-[1.65rem] mx-[1rem]"
-							variants={{
-								hidden: { opacity: 0, x: -75 },
-								visible: { opacity: 1, x: 0 },
-							}}
-							initial="hidden"
-							animate={mainControls}
+							initial={{ opacity: 0, x: "-100%" }}
+							whileInView={{ opacity: 1, x: "0%" }}
 							transition={{
-								type: "spring",
-								duration: 0.3,
-								delay: 0.75,
+								x: {
+									visualDuration: 0.5,
+								},
 							}}>
 							Atualmente, trabalho com React, Angular, TypeScript
 							e ferramentas modernas para criar aplicações
@@ -245,8 +199,9 @@ export default function Home() {
 						</h2>
 						<div className="flex flex-col gap-[2rem]">
 							{experiences.map(
-								(data): ReactNode => (
+								(data, index): ReactNode => (
 									<Timeline
+										index={index}
 										timelineData={data}
 										key={data.id}
 									/>
@@ -269,7 +224,7 @@ export default function Home() {
 							/>
 						</section>
 					</section>
-				</section>
+				</motion.section>
 			</main>
 		</>
 	);

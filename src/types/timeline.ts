@@ -1,5 +1,6 @@
 export interface TimelineProps {
-	timelineData: TimelineData;
+	timelineData: TimelineData,
+	index: number,
 }
 
 export interface TimelineData {

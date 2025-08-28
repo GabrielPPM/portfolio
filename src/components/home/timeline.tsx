@@ -1,15 +1,24 @@
-import {TimelineProps} from "@/types/timeline";
+import { TimelineProps } from "@/types/timeline";
 import React from "react";
 import Badge from "./badge";
+import { motion } from "motion/react";
 
-export default function Timeline({timelineData}: TimelineProps) {
+export default function Timeline({ timelineData, index }: TimelineProps) {
 	return (
-		<div
+		<motion.div
+			id={String(timelineData.id)}
 			className={`flex flex-col justify-center-safe text-start w-full h-auto text-2xl border-[#EBBA21] max-sm:border-1 max-sm:p-[1.5rem] max-sm:rounded-2xl max-sm:bg-[#3B90D7]/25 ${
 				timelineData.side === "left"
 					? "md:border-l-2 md:justify-self-start"
 					: "md:border-r-2 md:justify-self-end"
-			}`}>
+			}`}
+			initial={{ opacity: 0, x: `${index % 2 === 0 ? "-100%" : "100%"}` }}
+			whileInView={{ opacity: 1, x: "0%" }}
+			transition={{
+				x: {
+					visualDuration: 0.5,
+				},
+			}}>
 			<div className="flex flex-col">
 				<h2 className="text-center wrap-break-word text-[#EBBA21] text-4xl font-bold">
 					{timelineData.enterprise}
@@ -35,9 +44,9 @@ export default function Timeline({timelineData}: TimelineProps) {
 			</ul>
 			<ul className="flex flex-wrap justify-center-safe mt-[1rem] gap-[0.5rem]">
 				{timelineData.stacks.map((stack) => (
-					<Badge key={stack} text={stack}/>
+					<Badge key={stack} text={stack} />
 				))}
 			</ul>
-		</div>
+		</motion.div>
 	);
 }
