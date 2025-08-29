@@ -13,10 +13,11 @@ import ReactLogo from "@/components/icons/home/techStacks/reactLogo";
 import TailwindcssLogo from "@/components/icons/home/techStacks/tailwindcssLogo";
 import TypescriptLogo from "@/components/icons/home/techStacks/typescriptLogo";
 import Card from "@/types/card";
-import { TimelineData } from "@/types/timeline";
+import {TimelineData} from "@/types/timeline";
 import Image from "next/image";
-import { ReactNode } from "react";
-import { motion } from "motion/react";
+import {ReactNode, useEffect, useRef, useState} from "react";
+import {motion, useInView} from "motion/react";
+import card from "@/types/card";
 
 export default function Home() {
 	const techStackCards: Card[] = [
@@ -77,6 +78,8 @@ export default function Home() {
 		},
 	];
 
+	const [techStackOrder, setTechStackOrder] = useState(techStackCards);
+
 	const startDate = new Date(2024, 3).getUTCFullYear();
 	const todayDate = new Date().getUTCFullYear();
 
@@ -126,9 +129,30 @@ export default function Home() {
 		},
 	];
 
+	const ref = useRef(null);
+	const inView = useInView(ref);
+
+	useEffect(() => {
+		console.log("IN VIEW: ", inView);
+
+		if (inView) {
+			const timout = setTimeout(
+				() => setTechStackOrder(prev => shuffle(prev)),
+				2500
+			);
+			return () => clearTimeout(timout);
+		}
+	});
+
+	function shuffle([...array]: card[]) {
+		if (array.length === 0) return array;
+		const [first, ...rest] = array;
+		return [...rest, first];
+	}
+
 	return (
 		<>
-			<main className="flex justify-center-safe items-end w-[100vw] mx-[1.5rem]">
+			<main className="flex justify-center-safe items-end px-[1.5rem]">
 				<motion.section className="flex flex-col items-center gap-[1rem]">
 					<section
 						id="about-me"
@@ -152,8 +176,8 @@ export default function Home() {
 						</motion.div>
 						<motion.h1
 							className="text-center text-4xl font-bodoni"
-							initial={{ opacity: 0, x: "-100%" }}
-							whileInView={{ opacity: 1, x: "0%" }}
+							initial={{opacity: 0, x: "-100%"}}
+							whileInView={{opacity: 1, x: "0%"}}
 							transition={{
 								x: {
 									visualDuration: 0.5,
@@ -163,8 +187,8 @@ export default function Home() {
 						</motion.h1>
 						<motion.h2
 							className="text-center text-2xl my-[0.5rem] font-bodoni"
-							initial={{ opacity: 0, x: "100%" }}
-							whileInView={{ opacity: 1, x: "0%" }}
+							initial={{opacity: 0, x: "100%"}}
+							whileInView={{opacity: 1, x: "0%"}}
 							transition={{
 								x: {
 									visualDuration: 0.5,
@@ -173,9 +197,9 @@ export default function Home() {
 							Desenvolvedor front-end
 						</motion.h2>
 						<motion.p
-							className="max-[333px]:text-center text-[1.65rem] mx-[1rem]"
-							initial={{ opacity: 0, x: "-100%" }}
-							whileInView={{ opacity: 1, x: "0%" }}
+							className="max-[333px]:text-center text-[1.65rem]"
+							initial={{opacity: 0, x: "-100%"}}
+							whileInView={{opacity: 1, x: "0%"}}
 							transition={{
 								x: {
 									visualDuration: 0.5,
@@ -212,10 +236,12 @@ export default function Home() {
 
 					<section id="tech-stacks">
 						<section className="flex flex-col justify-center mt-[3rem] text-center w-full">
-							<TechStackLayout
-								title="Tech Stacks"
-								cards={techStackCards}
-							/>
+							<div ref={ref}>
+								<TechStackLayout
+									title="Tech Stacks"
+									cards={techStackOrder}
+								/>
+							</div>
 						</section>
 						<section className="flex flex-col justify-center text-center w-full">
 							<TechStackLayout

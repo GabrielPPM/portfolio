@@ -22,7 +22,7 @@ export default function RootLayout({
 			<body>
 				<Navbar/>
 				<Sidebar />
-				<main className="z-20">{children}</main>
+				<main className="z-20 overflow-hidden">{children}</main>
 				<footer></footer>
 			</body>
 		</html>

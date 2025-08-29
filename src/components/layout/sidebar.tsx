@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { ReactNode, useState } from "react";
+import React, {ReactNode, useState} from "react";
 import EmailIcon from "../icons/sidebar/emailIcon";
 import GitHubLogo from "../icons/sidebar/gitHubLogo";
 import WhatsappIcon from "../icons/sidebar/whatsappIcon";
@@ -44,7 +44,7 @@ export default function Sidebar() {
 					display ? "animate-enterFromLeft" : "animate-exitLeft"
 				}`}>
 				<ul
-					className={`flex flex-col justify-between h-[20rem] md:h-[20rem] lg:h-[21rem] text-xl text-[#0B181F] font-bold bg-[#3B90D7]/30 backdrop-blur-xs rounded-md ${
+					className={`flex flex-col justify-between h-[20rem] md:h-[20rem] lg:h-[21rem] text-xl text-[#0B181F] font-bold bg-[#1d99ff]/30 backdrop-blur-xs rounded-md ${
 						display
 							? "w-[3.5rem] md:w-[3.5rem] lg:w-[3.5rem]"
 							: "pointer-events-none w-[2.5rem]"
@@ -77,7 +77,7 @@ export default function Sidebar() {
 				}`}>
 				<button
 					className={
-						"bg-[#3B90D7]/30 backdrop-blur-xs text-5xl sm:text-5xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
+						"bg-[#1d99ff]/30 backdrop-blur-xs text-5xl sm:text-5xl md:text-5xl lg:text-6xl px-[0.1rem] rounded-r-sm"
 					}
 					onClick={() => setDisplay(!display)}>
 					{">"}
