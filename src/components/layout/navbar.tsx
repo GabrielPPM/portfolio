@@ -35,7 +35,7 @@ export default function Navbar() {
 							key={link.name}
 							className={`flex justify-center-safe items-center-safe lg:w-[7.8rem] hover:bg-gray-300/20 hover:backdrop-blur-lg hover:text-[#1d99ff] hover:rounded-full hover:py-[0.1rem]`}>
 							<button
-								className="w-[5.5rem] active:py-[0.23rem] active:bg-[#1d99ff] active:rounded-full"
+								className="w-[5.5rem] active:py-[0.23rem] active:bg-[#1d99ff]/30 active:rounded-full"
 								onClick={() => setElement(link.href)}>
 								{link.name}
 							</button>

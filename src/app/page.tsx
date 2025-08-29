@@ -13,10 +13,10 @@ import ReactLogo from "@/components/icons/home/techStacks/reactLogo";
 import TailwindcssLogo from "@/components/icons/home/techStacks/tailwindcssLogo";
 import TypescriptLogo from "@/components/icons/home/techStacks/typescriptLogo";
 import Card from "@/types/card";
-import {TimelineData} from "@/types/timeline";
+import { TimelineData } from "@/types/timeline";
 import Image from "next/image";
-import {ReactNode, useEffect, useRef, useState} from "react";
-import {motion, useInView} from "motion/react";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
 import card from "@/types/card";
 
 export default function Home() {
@@ -137,7 +137,7 @@ export default function Home() {
 
 		if (inView) {
 			const timout = setTimeout(
-				() => setTechStackOrder(prev => shuffle(prev)),
+				() => setTechStackOrder((prev) => shuffle(prev)),
 				2500
 			);
 			return () => clearTimeout(timout);
@@ -158,77 +158,102 @@ export default function Home() {
 						id="about-me"
 						className="flex flex-col items-center-safe sm:w-full gap-[1rem]">
 						<motion.div
+							className="flex flex-col md:flex-row md:justify-center-safe items-center gap-[2rem] md:gap-0"
+							initial={{
+								opacity: 0,
+								placeSelf: "start",
+								width: 0,
+							}}
+							whileInView={{ opacity: 1, width: "100%" }}
 							transition={{
-								scale: {
-									type: "spring",
-									delay: 0.5,
-									visualDuration: 0.5,
-								},
-							}}>
-							<Image
-								className="w-[12rem] h-[14.4rem] mt-[5.5rem] rounded-2xl object-none object-center"
-								src="/Gabriel Machado.webp"
-								width={150}
-								height={150}
-								alt="foto de perfil"
-								priority={true}
-							/>
+								delay: 0.1,
+								visualDuration: 0.1,
+							}}
+							viewport={{ once: true }}>
+							<div>
+								<Image
+									className="z-10 w-[12rem] md:w-[100%] h-[14.4rem] mt-[5.5rem] max-sm:rounded-2xl md:rounded-l-2xl object-none object-center md:h-[25rem] md:object-cover"
+									src="/gabriel_machado.webp"
+									width={150}
+									height={150}
+									alt="foto de perfil"
+									priority={true}
+								/>
+							</div>
+							<div className="md:relative md:z-0 text-center md:text-start md:w-[63%] md:content-center md:place-self-end md:h-[25rem] md:p-[1rem] md:bg-[hsl(0,100%,25%)]">
+								<motion.h1
+									className="z-0 md:relative text-4xl md:text-[2.7rem] md:text-5xl font-bodoni"
+									initial={{ opacity: 0, x: "-100%" }}
+									whileInView={{ opacity: 1, x: "0%" }}
+									transition={{
+										delay: 0.2,
+										x: {
+											delay: 0.2,
+											visualDuration: 0.5,
+										},
+									}}>
+									Hello World, eu sou Gabriel Machado!
+								</motion.h1>
+								<motion.h2
+									className="text-2xl my-[2rem] md:my-[1rem] font-bodoni"
+									initial={{ opacity: 0, x: "100%" }}
+									whileInView={{ opacity: 1, x: "0%" }}
+									transition={{
+										delay: 0.6,
+										x: {
+											delay: 0.6,
+											visualDuration: 0.5,
+										},
+									}}>
+									Desenvolvedor front-end
+								</motion.h2>
+								<motion.p
+									className="px-1rem] text-[1.35rem] font-bold md:mt-0"
+									initial={{ opacity: 0, x: "-100%" }}
+									whileInView={{ opacity: 1, x: "0%" }}
+									transition={{
+										delay: 0.8,
+										x: {
+											delay: 0.8,
+											visualDuration: 0.5,
+										},
+									}}>
+									Atualmente, trabalho com React, Angular,
+									TypeScript e ferramentas modernas para criar
+									aplicações escaláveis, com foco em
+									arquitetura limpa, usabilidade e
+									performance. Nos próximos anos, quero
+									evoluir como full-stack developer,
+									aprofundando meus conhecimentos em back-end
+									e infraestrutura para entregar soluções
+									completas de ponta a ponta.
+								</motion.p>
+							</div>
 						</motion.div>
-						<motion.h1
-							className="text-center text-4xl font-bodoni"
-							initial={{opacity: 0, x: "-100%"}}
-							whileInView={{opacity: 1, x: "0%"}}
-							transition={{
-								x: {
-									visualDuration: 0.5,
-								},
-							}}>
-							Hello World! Eu sou Gabriel Machado
-						</motion.h1>
-						<motion.h2
-							className="text-center text-2xl my-[0.5rem] font-bodoni"
-							initial={{opacity: 0, x: "100%"}}
-							whileInView={{opacity: 1, x: "0%"}}
-							transition={{
-								x: {
-									visualDuration: 0.5,
-								},
-							}}>
-							Desenvolvedor front-end
-						</motion.h2>
-						<motion.p
-							className="max-[333px]:text-center text-[1.65rem]"
-							initial={{opacity: 0, x: "-100%"}}
-							whileInView={{opacity: 1, x: "0%"}}
-							transition={{
-								x: {
-									visualDuration: 0.5,
-								},
-							}}>
-							Atualmente, trabalho com React, Angular, TypeScript
-							e ferramentas modernas para criar aplicações
-							escaláveis, com foco em arquitetura limpa,
-							usabilidade e performance. Nos próximos anos, quero
-							evoluir como full-stack developer, aprofundando meus
-							conhecimentos em back-end e infraestrutura para
-							entregar soluções completas de ponta a ponta.
-						</motion.p>
 					</section>
 
 					<section
 						id="experiences"
-						className="flex flex-col justify-center-safe text-center">
+						className="flex flex-col w-full justify-center-safe text-center">
 						<h2 className="mt-[5rem] mb-[2rem] text-4xl font-bold">
 							Experiências
 						</h2>
-						<div className="flex flex-col gap-[2rem]">
+						<div className="flex flex-col gap-[2rem] md:gap-0">
 							{experiences.map(
 								(data, index): ReactNode => (
-									<Timeline
-										index={index}
-										timelineData={data}
-										key={data.id}
-									/>
+									<div
+										className={`flex w-full ${
+											data.side === "left"
+												? "md:justify-end"
+												: "md:justify-start"
+										}`}
+										key={data.id}>
+										<Timeline
+											index={index}
+											timelineData={data}
+											key={data.id}
+										/>
+									</div>
 								)
 							)}
 						</div>
